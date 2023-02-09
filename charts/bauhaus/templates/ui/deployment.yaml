@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bauhaus-front
+spec:
+  selector:
+    matchLabels:
+      app: bauhaus-front
+  template:
+    metadata:
+      labels:
+        app: bauhaus-front
+    spec:
+      containers:
+      - name: bauhaus-front
+        image: inseefr/bauhaus
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
