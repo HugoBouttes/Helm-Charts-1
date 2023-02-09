@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphdb
+spec:
+  selector:
+    matchLabels:
+      app: graphdb
+  template:
+    metadata:
+      labels:
+        app: graphdb
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: graphdb
+      containers:
+      - name: graphdb
+        image: ontotext/graphdb:10.0.2
+        volumeMounts:
+          - name: data
+            mountPath: /opt/graphdb/home/data
+            subPath: data
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+        ports:
+        - containerPort: 7200
