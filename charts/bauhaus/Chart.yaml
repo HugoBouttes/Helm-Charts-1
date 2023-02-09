@@ -1,0 +1,7 @@
+apiVersion: v2
+name: bauhaus
+description: A Helm chart for Bauhaus API, UI & DB
+
+type: application
+version: 0.6.0
+appVersion: "1.16.0"
